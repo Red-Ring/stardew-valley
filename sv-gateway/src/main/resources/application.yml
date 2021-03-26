@@ -10,12 +10,16 @@ spring:
         locator:
           enabled: true
           lower-case-service-id: true
+      #路由信息
       routes:
         - id: sv-common
           uri: lb://sv-common
           predicates:
             - Path=/api/**
-
+#        - id: sv-******
+#            uri: lb://sv-******
+#            predicates:
+#              - Path=/api/**
   profiles:
     active: dev
 

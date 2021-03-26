@@ -9,6 +9,7 @@
     <packaging>pom</packaging>
     <version>1.0.0</version>
 
+    <!-- 子模块 -->
     <modules>
         <module>sv-common</module>
         <module>sv-gateway</module>
@@ -17,6 +18,7 @@
     <name>stardew-valley</name>
     <description>父工程</description>
 
+    <!-- 新加入的组件依赖版本号写这方便管理 -->
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>1.8</maven.compiler.source>
@@ -25,13 +27,17 @@
         <spring.boot.dependencies.version>2.2.5.RELEASE</spring.boot.dependencies.version>
         <spring.cloud.alibaba.dependencies.version>2.2.1.RELEASE</spring.cloud.alibaba.dependencies.version>
         <mysql.version>5.1.47</mysql.version>
+        <mybatis.plus.version>3.4.2</mybatis.plus.version>
         <lombok.version>1.16.10</lombok.version>
-        <slf4j.version>1.7.25</slf4j.version>
+        <junit.version>4.12</junit.version>
     </properties>
 
+    <!-- <dependencyManagement>标签包围的依赖可被子module共享，子module声明版本号就用子module版本号，未声明版本号就用父module的版本号 -->
     <dependencyManagement>
         <dependencies>
 
+            <!-- 注意SC、SB、SCA三者依赖顺序 -->
+            <!-- 1.SpringCloud相关组件依赖 -->
             <dependency>
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-dependencies</artifactId>
@@ -40,6 +46,7 @@
                 <scope>import</scope>
             </dependency>
 
+            <!-- 2.SpringBoot相关组件依赖 -->
             <dependency>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-dependencies</artifactId>
@@ -48,6 +55,7 @@
                 <scope>import</scope>
             </dependency>
 
+            <!-- 3.SpringCloudAlibaba相关组件依赖 -->
             <dependency>
                 <groupId>com.alibaba.cloud</groupId>
                 <artifactId>spring-cloud-alibaba-dependencies</artifactId>
@@ -56,17 +64,34 @@
                 <scope>import</scope>
             </dependency>
 
+            <!-- MySQL驱动 -->
             <dependency>
                 <groupId>mysql</groupId>
                 <artifactId>mysql-connector-java</artifactId>
                 <version>${mysql.version}</version>
             </dependency>
 
+            <!-- Mybatis-Plus依赖 -->
+            <dependency>
+                <groupId>com.baomidou</groupId>
+                <artifactId>mybatis-plus</artifactId>
+                <version>${mybatis.plus.version}</version>
+            </dependency>
+
+            <!-- Lombok -->
             <dependency>
                 <groupId>org.projectlombok</groupId>
                 <artifactId>lombok</artifactId>
                 <version>${lombok.version}</version>
             </dependency>
+
+            <!-- Junit -->
+            <dependency>
+                <groupId>junit</groupId>
+                <artifactId>junit</artifactId>
+                <version>${junit.version}</version>
+            </dependency>
+
 
         </dependencies>
     </dependencyManagement>

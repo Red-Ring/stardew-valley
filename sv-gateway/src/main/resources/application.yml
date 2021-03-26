@@ -1,0 +1,23 @@
+spring:
+  application:
+    name: sv-gateway
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+          lower-case-service-id: true
+      routes:
+        - id: sv-common
+          uri: lb://sv-common
+          predicates:
+            - Path=/api/**
+
+  profiles:
+    active: dev
+
+server:
+  port: 9876

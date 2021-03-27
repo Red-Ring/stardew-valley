@@ -1,0 +1,35 @@
+spring:
+  application:
+    name: sv-gateway
+  cloud:
+    nacos:
+      config:
+        server-addr: 127.0.0.1:8848 #nacos注册中心所在的地址（这里是本机8848端口）
+        file-extension: yaml #nacos配置中心配置文件的后缀，下面代表的${spring.cloud.nacos.config.file-extension}
+        namespace: 4f10edd1-35a6-4ade-9da8-3048bea90201 #命名空间（在nacos申请命名空间），服务会注册到该命名空间下的服务列表中
+        extension-configs:
+          - data-id: stardew-valley-${spring.application.name}-${spring.profiles.active}.${spring.cloud.nacos.config.file-extension} #将所有部分拼接后为: stardew-valley-sv-gateway-dev.yaml
+            refresh: true #更新配置自动刷新
+            group: DEFAULT_GROUP #配置文件所在分组（默认为DEFAULT_GROUP）
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+          lower-case-service-id: true
+      #路由信息
+      routes:
+        - id: sv-common #唯一标识，随便取
+          uri: lb://sv-common #要路由去的服务名
+          predicates: #断言-路由匹配条件，符合predicate的条件便把请求路由至uri代表的服务
+            - Path=/api/**
+#        - id: sv-******
+#            uri: lb://sv-******
+#            predicates:
+#              - Path=/api/**
+
+  #环境隔离
+  profiles:
+    active: dev
+
+server:
+  port: 9876

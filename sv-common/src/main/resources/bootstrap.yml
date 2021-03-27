@@ -1,0 +1,38 @@
+spring:
+  application:
+    name: sv-common #下面代表的${spring.application.name}
+  cloud:
+    nacos:
+      config:
+        server-addr: 127.0.0.1:8848 #nacos注册中心所在的地址（这里是本机8848端口）
+        file-extension: yaml #nacos配置中心配置文件的后缀，下面代表的${spring.cloud.nacos.config.file-extension}
+        namespace: 4f10edd1-35a6-4ade-9da8-3048bea90201 #命名空间（在nacos申请命名空间），服务会注册到该命名空间下的服务列表中
+        extension-configs:
+          - data-id: stardew-valley-${spring.application.name}-${spring.profiles.active}.${spring.cloud.nacos.config.file-extension} #将所有部分拼接后为: stardew-valley-sv-common-dev.yaml
+            refresh: true #更新配置自动刷新
+            group: DEFAULT_GROUP #配置文件所在分组（默认为DEFAULT_GROUP）
+
+  #如果没把数据源配在nacos配置中心就开放此段注释
+#  datasource:
+#    driver-class-name: com.mysql.jdbc.Driver
+#    url: jdbc:mysql://172.28.6.68:3306/stardew_valley?useUnicode=true&characterEncoding=UTF-8&useSSL=false&serverTimezone=UTC
+#    username: root
+#    password: 123456
+
+  jpa:
+    database: MYSQL
+    show-sql: true
+    hibernate:
+      ddl-auto: none
+    properties:
+      hibernate:
+        format_sql: false
+
+  ##环境隔离，上面代表的${spring.profiles.active}
+  profiles:
+    active: dev
+
+server:
+  port: 8319
+  servlet:
+    context-path: /api

@@ -4,6 +4,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.Signature;
+import org.aspectj.lang.annotation.After;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.annotation.Pointcut;
@@ -30,18 +31,31 @@ public class VillagerAspect {
     private static final Logger logger = LoggerFactory.getLogger(VillagerAspect.class);
 
     /**
+     * execution(方法修饰符 返回类型 方法全限定名(参数))
+     * <p>
+     * *只能匹配一级路径
+     * <p>
+     * ..可以匹配多级，可以是包路径，也可以匹配多个参数
+     * <p>
+     * + 只能放在类后面，表明本类及所有子类
+     * <p>
+     * 示例：所有get开头的，第一个参数是Long类型的 --> @Pointcut("execution(* *..get*(Long,..))")
+     * <p>
      * 访问修饰符可不写不能用*，第一个*代表返回值类型不限，controller处也可写*代表所有controller，最后一个*代表所有方法，。。表示方法参数不限
      */
     private final String POINT_CUT = "execution(public * org.zgx.common.controller.VillagerController.*(..))";
     private final ObjectMapper OBJECT_MAPPER = new ObjectMapper();
 
+    /**
+     * 切点
+     */
     @Pointcut(POINT_CUT)
     public void pointCut() {
     }
 
     @Before(value = "pointCut()")
     public void before(JoinPoint joinPoint) {
-        logger.info("@Before通知开始了！");
+        logger.info("@Before通知执行开始了！");
         Object[] args = joinPoint.getArgs();
         Arrays.stream(args).forEach(arg -> {
             try {
@@ -93,8 +107,14 @@ public class VillagerAspect {
         logger.info(request.getRemoteAddr());
         logger.info(request.getMethod());
 
-        logger.info("before通知执行结束了！");
+        logger.info("@before通知执行结束了！");
     }
+
+    @After(value = POINT_CUT)
+    public void doAfterAdvice(JoinPoint joinPoint) {
+        logger.info("@After通知执行了!");
+    }
+
 }
 
 

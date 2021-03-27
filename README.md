@@ -1,7 +1,7 @@
 # stardew-valley
 namespace: 4f10edd1-35a6-4ade-9da8-3048bea90201
 
-stardew-valley-sv-common-dev.yaml
+# stardew-valley-sv-common-dev.yaml
 spring:
   cloud:
     nacos:
@@ -14,7 +14,7 @@ spring:
     username: root
     password: 123456
 
-stardew-valley-sv-gateway-dev.yaml
+# stardew-valley-sv-gateway-dev.yaml
 spring:
   cloud:
     nacos:
@@ -33,7 +33,7 @@ spring:
           predicates:
             - Path=/api/**
 
-stardew-valley-sv-feign-dev.yaml
+# stardew-valley-sv-feign-dev.yaml
 spring:
   cloud:
     nacos:

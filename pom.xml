@@ -14,6 +14,7 @@
         <module>sv-common</module>
         <module>sv-gateway</module>
         <module>sv-feign</module>
+        <module>sv-security</module>
     </modules>
 
     <name>stardew-valley</name>

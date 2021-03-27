@@ -12,22 +12,6 @@ spring:
             refresh: true #更新配置自动刷新
             group: DEFAULT_GROUP #配置文件所在分组（默认为DEFAULT_GROUP）
 
-  #如果没把数据源配在nacos配置中心就开放此段注释
-#  datasource:
-#    driver-class-name: com.mysql.jdbc.Driver
-#    url: jdbc:mysql://172.28.6.68:3306/stardew_valley?useUnicode=true&characterEncoding=UTF-8&useSSL=false&serverTimezone=UTC
-#    username: root
-#    password: 123456
-
-  jpa:
-    database: MYSQL
-    show-sql: true
-    hibernate:
-      ddl-auto: none
-    properties:
-      hibernate:
-        format_sql: false
-
   ##环境隔离，上面代表的${spring.profiles.active}
   profiles:
     active: dev

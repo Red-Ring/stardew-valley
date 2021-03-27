@@ -9,9 +9,9 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>sv-common</artifactId>
-    <name>sv-common</name>
-    <description>common module</description>
+    <artifactId>sv-security</artifactId>
+    <name>sv-security</name>
+    <description>security module</description>
 
     <dependencies>
         <dependency>
@@ -32,11 +32,6 @@
         <dependency>
             <groupId>com.alibaba.cloud</groupId>
             <artifactId>spring-cloud-starter-alibaba-nacos-config</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>com.alibaba.cloud</groupId>
-            <artifactId>spring-cloud-starter-alibaba-sentinel</artifactId>
         </dependency>
 
         <dependency>
@@ -72,7 +67,7 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
-                    <mainClass>org.zgx.common.CommonApplication</mainClass>
+                    <mainClass>org.zgx.common.SecurityApplication</mainClass>
                 </configuration>
                 <executions>
                     <execution>
@@ -84,5 +79,6 @@
             </plugin>
         </plugins>
     </build>
+
 
 </project>

@@ -19,7 +19,7 @@ import org.zgx.common.service.VillagerService;
 @Service
 public class VillagerServiceImpl implements VillagerService {
 
-    private static Logger logger = LoggerFactory.getLogger(VillagerServiceImpl.class);
+    private static final Logger logger = LoggerFactory.getLogger(VillagerServiceImpl.class);
 
     @Autowired
     private VillagerRepository villagerRepository;
@@ -30,6 +30,7 @@ public class VillagerServiceImpl implements VillagerService {
             this.villagerRepository.save(villager);
             return ResultUtils.success("success");
         } catch (Exception e) {
+            logger.info("fail");
             return ResultUtils.fail("fail");
         }
     }
@@ -40,6 +41,7 @@ public class VillagerServiceImpl implements VillagerService {
             this.villagerRepository.deleteById(villagerId);
             return ResultUtils.success("success");
         } catch (Exception e) {
+            logger.info("fail");
             return ResultUtils.fail("fail");
         }
     }
@@ -50,6 +52,7 @@ public class VillagerServiceImpl implements VillagerService {
             this.villagerRepository.save(villager);
             return ResultUtils.success("success");
         } catch (Exception e) {
+            logger.info("fail");
             return ResultUtils.fail("fail");
         }
     }

@@ -8,8 +8,6 @@ import org.zgx.common.component.result.ResultInfo;
 import org.zgx.common.domain.Villager;
 import org.zgx.common.service.VillagerService;
 
-import javax.annotation.Resource;
-
 /**
  * 村民控制器
  *

@@ -13,6 +13,7 @@
     <modules>
         <module>sv-common</module>
         <module>sv-gateway</module>
+        <module>sv-feign</module>
     </modules>
 
     <name>stardew-valley</name>

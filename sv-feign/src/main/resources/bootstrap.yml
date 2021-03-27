@@ -1,6 +1,6 @@
 spring:
   application:
-    name: sv-gateway
+    name: sv-feign
   cloud:
     nacos:
       config:
@@ -12,9 +12,10 @@ spring:
             refresh: true #更新配置自动刷新
             group: DEFAULT_GROUP #配置文件所在分组（默认为DEFAULT_GROUP）
 
-  #环境隔离
   profiles:
     active: dev
 
 server:
-  port: 9876
+  port: 8318
+  servlet:
+    context-path: /api

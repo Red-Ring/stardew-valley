@@ -14,7 +14,7 @@
         <module>sv-common</module>
         <module>sv-gateway</module>
         <module>sv-feign</module>
-        <module>sv-security</module>
+        <module>sv-auth</module>
     </modules>
 
     <name>stardew-valley</name>
@@ -32,6 +32,7 @@
         <mybatis.plus.version>3.4.2</mybatis.plus.version>
         <lombok.version>1.16.10</lombok.version>
         <junit.version>4.12</junit.version>
+        <hutool.version>5.6.3</hutool.version>
     </properties>
 
     <!-- <dependencyManagement>标签包围的依赖可被子module共享，子module声明版本号就用子module版本号，未声明版本号就用父module的版本号 -->
@@ -92,6 +93,13 @@
                 <groupId>junit</groupId>
                 <artifactId>junit</artifactId>
                 <version>${junit.version}</version>
+            </dependency>
+
+            <!-- Hutool -->
+            <dependency>
+                <groupId>cn.hutool</groupId>
+                <artifactId>hutool-all</artifactId>
+                <version>${hutool.version}</version>
             </dependency>
 
 

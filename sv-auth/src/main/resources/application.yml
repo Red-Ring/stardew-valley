@@ -1,0 +1,28 @@
+spring:
+  application:
+    name: sv-auth
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
+
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+
+  redis:
+    database: 0
+    port: 6379
+    host: localhost
+    password:
+
+  profiles:
+    active: dev
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+
+server:
+  port: 9420
